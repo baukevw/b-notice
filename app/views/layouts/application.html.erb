@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsBase</title>
+    <title>B-Notice</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,81 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrapper">
+
+      <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to (content_tag :i, (), class: 'fa fa-bell fa-fw') + ' B-Notice', root_path, class: 'navbar-brand' %>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+              </li>
+              <li>
+                <%# link_to (content_tag :i, (), class: 'fa fa-gear fa-fw') + ' Settings', edit_user_registration_path %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%# link_to (content_tag :i, (), class: 'fa fa-sign-out fa-fw') + ' Logout', destroy_user_session_path, method: :delete  %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="navbar sidebar" role="navigation">
+          <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+              <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                  <input type="text" class="form-control" placeholder="Search...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+              </li>
+              <li class="active">
+                <%= link_to (content_tag :i, (), class: 'fa fa-dashboard fa-fw') + ' Dashboard', root_path %>
+              </li>
+              <li>
+                <%= link_to (content_tag :i, (), class: 'fa fa-users fa-fw') + ' Clients', '#' %>
+              </li>
+              <li>
+                <%= link_to (content_tag :i, (), class: 'fa fa-file-text fa-fw') + ' Invoices', '#' %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <% flash.each do |key, value| %>
+                <%= content_tag :div, class: "alert alert-dismissable #{alert_class(key)} fade in" do %>
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <%= content_tag :i, nil, class: "icon #{alert_icon(key)}" %>
+                  <strong><%= t(value) %></strong>
+                <% end %>
+              <% end %>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

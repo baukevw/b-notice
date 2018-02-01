@@ -1,0 +1,132 @@
+  <h1 class="page-header">B-Notice Dashboard</h1>
+  <div class="row">
+    <div class="col-lg-3 col-md-6">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <i class="fa fa-comments fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">26</div>
+                      <div>New Comments!</div>
+                  </div>
+              </div>
+          </div>
+          <a href="#">
+              <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+              </div>
+          </a>
+      </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+      <div class="panel panel-green">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <i class="fa fa-tasks fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">12</div>
+                      <div>New Tasks!</div>
+                  </div>
+              </div>
+          </div>
+          <a href="#">
+              <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+              </div>
+          </a>
+      </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+      <div class="panel panel-yellow">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <i class="fa fa-shopping-cart fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">124</div>
+                      <div>New Orders!</div>
+                  </div>
+              </div>
+          </div>
+          <a href="#">
+              <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+              </div>
+          </a>
+      </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+      <div class="panel panel-red">
+          <div class="panel-heading">
+              <div class="row">
+                  <div class="col-xs-3">
+                      <i class="fa fa-support fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                      <div class="huge">13</div>
+                      <div>Support Tickets!</div>
+                  </div>
+              </div>
+          </div>
+          <a href="#">
+              <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+              </div>
+          </a>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-8">
+
+  </div>
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <i class="fa fa-lightbulb-o fa-fw"></i> Stoplight Status
+      </div>
+      <div class="panel-body">
+        <%= form_tag 'stoplight', class: 'stoplight list-group' do %>
+          <div class="list-group-item">
+            <i class="fa fa-lightbulb-o fa-fw"></i> Red
+              <div class="pull-right">
+                <%= check_box_tag '0', @red, checked = (@red == 1 ? true : false), { data: { 'on-color': 'danger', 'on-text': 'On', 'off-text': 'Off', 'size': 'mini' }, class: 'switchbox' } %>
+              </div>
+          </div>
+          <div class="list-group-item">
+            <i class="fa fa-lightbulb-o fa-fw"></i> Orange
+            <div class="pull-right">
+              <%= check_box_tag '1', @orange, checked = (@orange == 1 ? true : false), { data: { 'on-color': 'warning', 'on-text': 'On', 'off-text': 'Off', 'size': 'mini' }, class: 'switchbox' } %>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <i class="fa fa-lightbulb-o fa-fw"></i> Green
+            <div class="pull-right">
+              <%= check_box_tag '2', @green, checked = (@green == 1 ? true : false), { data: { 'on-color': 'success', 'on-text': 'On', 'off-text': 'Off', 'size': 'mini' }, class: 'switchbox' } %>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <i class="fa fa-volume-up fa-fw"></i> Buzzer
+            <div class="pull-right">
+              <%= check_box_tag '3', @buzzer, checked = (@buzzer == 1 ? true : false), { data: { 'on-color': 'default', 'on-text': 'On', 'off-text': 'Off', 'size': 'mini' }, class: 'switchbox' } %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
