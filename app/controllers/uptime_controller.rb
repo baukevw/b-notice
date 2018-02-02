@@ -1,5 +1,5 @@
 class UptimeController < ApplicationController
-  skip_before_action :verify_authenticity_token, if: :json_request?
+  protect_from_forgery with: :null_session, only: :uptime_robot_endpoint
 
   def uptime_robot_endpoint
     logger.info params
