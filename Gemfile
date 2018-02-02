@@ -42,7 +42,6 @@ gem 'dotenv-rails'
 gem 'carrierwave'
 #Gems for image processing
 gem 'mini_magick'
-gem 'rmagick'
 
 # Gem to rename a rails application
 gem 'rename'
