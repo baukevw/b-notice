@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   post 'switch-handler', to: 'stoplight#switch_handler'
+  post 'uptime-robot-endpoint', to: 'uptime#uptime_robot_endpoint'
 end
