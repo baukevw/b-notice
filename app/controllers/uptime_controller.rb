@@ -15,7 +15,7 @@ class UptimeController < ApplicationController
       action1 = 'on'
       action2 = 'off'
       buzzer = true
-    when'2'
+    when '2'
       action1 = 'off'
       action2 = 'on'
       buzzer = false
@@ -29,8 +29,8 @@ class UptimeController < ApplicationController
   end
 
   def send_api_request(action1, action2, buzzer)
-    request1 = HTTParty.post(ENV['API_CHANGE_URL'], { :body =>  { "pin_number" => "0", "action" => action1 }})
-    request2 = HTTParty.post(ENV['API_CHANGE_URL'], { :body =>  { "pin_number" => "2", "action" => action2 }})
+    request1 = HTTParty.post(ENV['API_CHANGE_URL'], body: { 'pin_number' => '0', 'action' => action1 })
+    request2 = HTTParty.post(ENV['API_CHANGE_URL'], body: { 'pin_number' => '2', 'action' => action2 })
     buzzer?(buzzer)
     return true if request1 && request2
     false
@@ -38,9 +38,9 @@ class UptimeController < ApplicationController
 
   def buzzer?(boolean)
     if boolean
-      HTTParty.post(ENV['API_CHANGE_URL'], { :body =>  { "pin_number" => "3", "action" => 'on' }})
+      HTTParty.post(ENV['API_CHANGE_URL'], body: { 'pin_number' => '3', 'action' => 'on' })
       sleep(5)
-      HTTParty.post(ENV['API_CHANGE_URL'], { :body =>  { "pin_number" => "3", "action" => 'off' }})
+      HTTParty.post(ENV['API_CHANGE_URL'], body: { 'pin_number' => '3', 'action' => 'off' })
     end
   end
 end

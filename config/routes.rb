@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   post 'switch-handler', to: 'stoplight#switch_handler'
   post 'uptime-robot-endpoint', to: 'uptime#uptime_robot_endpoint'
+  post 'rpi-relay-webhook', to: 'webhook#rpi_relay_webhook'
 end
