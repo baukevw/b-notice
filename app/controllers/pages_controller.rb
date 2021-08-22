@@ -13,17 +13,15 @@ class PagesController < ApplicationController
   private
 
   def fetch_stoplight_status
-    @relay_api_available = false
-    response = begin
-                 HTTParty.get(ENV['API_STATUS_URL'])
-               rescue SystemCallError, StandardError
-                 false
-               end
-    @data = if response
-              @relay_api_available = true
-              JSON.parse(response.body)
-            else
-              nil
-            end
+    response = HTTParty.get(ENV['API_STATUS_URL'])
+
+    case response
+    when 200
+      @relay_api_available = true
+      @data  = JSON.parse(response.body)
+    else
+      @relay_api_available = false
+      @data = nil
+    end
   end
 end
